@@ -1196,3 +1196,11 @@ section {
   display: none;
   height: 0;
 }
+
+
+#spinner{
+  position: relative;
+  left:47%;
+  top:10px;
+  display: none;
+}

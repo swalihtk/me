@@ -578,7 +578,7 @@
           </div>
 
           <div class="col-lg-6">
-            <form id="submit-form" action="">
+            <form id="submit-form" class="mt-3" action="">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
@@ -596,6 +596,7 @@
                 <textarea class="form-control" name="message" rows="6" placeholder="Message"></textarea>
               </div>
               <div class="text-center"><button id="submit-button" type="submit" class="btn mt-3">Send Message</button></div>
+              <div id="spinner" class="spinner-border text-primary"></div>
             </form>
           </div>
 
@@ -648,6 +649,8 @@
 
   <script>
     $("#submit-form").submit((e)=>{
+        let spinner=document.querySelector("#spinner");
+        spinner.style.display="block";
         e.preventDefault()
         $.ajax({
             url:"https://script.google.com/macros/s/AKfycbxqsTAA9E6OhjELxGau6eGeoeu9bDohi5RKwzZUCUlrz-sInIKk09ZUUtPe6RL36ZySJA/exec",
@@ -656,11 +659,12 @@
             success:function (response){
                 alert("Form submitted successfully")
                 window.location.reload()
+                spinner.style.display="none";
                 //window.location.href="https://google.com"
             },
             error:function (err){
                 alert("Something Error")
-
+                spinner.style.display="none";
             }
         })
     })
